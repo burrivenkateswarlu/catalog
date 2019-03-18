@@ -1,0 +1,69 @@
+{% include 'nav.html' %}
+<div class="main">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+<script>
+  function start() {
+    gapi.load('auth2', function() {
+      auth2 = gapi.auth2.init({
+        client_id: '942237437068-adhrqrdl3l2r156oom1bju1cjq96bg9b.apps.googleusercontent.com'
+      });
+    });
+  }
+</script>
+
+<center>
+<button id="signinButton" class="btn btn-primary" style="font-size:18px"><i class="fa fa-google"></i>&nbsp;SignIn</button>
+<div id="result"></div>
+</center>
+
+<center><div id="result">
+  <div class="container">
+  <div class="row"> 
+    {% for vr in vrs %}
+    
+      <div class="col-sm-3" style="border:1px solid blue;
+            border-radius: 20px;padding: 30px; width: 350px; margin: 20px;">
+          <a href="{{ url_for('showRifles',vrid=vr.id)}}" style="text-decoration: none;"><h4 class="text-primary">{{vr.name}}</h4></a>
+          
+      </div>
+      
+    {% endfor %}
+  </div>  
+</div>
+</div></center>
+
+<script>
+  $('#signinButton').click(function() {
+    function signInCallback(authResult){
+      if (authResult['code']){
+        $('#signinButton').attr('style', 'display: none');
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+          },
+          contentType: 'application/octet-stream; charset=utf-8',
+          success:function(result){
+            $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                 setTimeout(function() {
+                  window.location.href = "/RifleStore";
+                 }, 2000);
+          },
+          processData:false,
+          data:authResult['code']
+        });
+      } else{
+        // handle error
+        console.log('There was an error: ' + authResult['error']);
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+      }
+    }
+    auth2.grantOfflineAccess().then(signInCallback);
+  });
+</script>
+</div>

@@ -1,0 +1,44 @@
+
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+  <!-- {% for vr in vrs_cat %}
+    <a href="{{ url_for('showRifles',vrid=vr.id)}}">{{vr.name}}</a><br>
+    {% endfor %} -->
+    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <div class="alert alert-success alert-dismissable animated fadeIn">
+	            {% for message in messages %}
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	            <p class="h4"><strong>{{ message }}</strong></p>
+	            {% endfor %}
+	        </div>
+	    {% endif %}
+	{% endwith %}
+
+	<div class="text-center" style=" margin-left: 100px">
+		<img class="mySlides" src="http://hdqwalls.com/wallpapers/pubg-fight-5y.jpg" style="display:none; width: 750px; height: 400px; margin: 0; padding: 0; margin-top: 50px;">
+    <img class="mySlides" src="https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-Miramar-Battlegrounds-update-patch-963867.jpg" style="display:none; width: 750px; height: 400px; margin: 0; padding: 0; margin-top: 50px">
+    <img class="mySlides" src="https://cdn.atomix.vg/wp-content/uploads/2018/03/%C2%A1Apu%C3%B1ala-a-su-pareja-por-jugar-mucho-PUBG-Y-tambi%C3%A9n-por-enga%C3%B1arla-Atomix.jpg" style="display:none; width: 750px; height: 400px; margin: 0; padding: 0; margin-top: 50px">
+    <img class="mySlides" src="https://cdn.vox-cdn.com/thumbor/VGQaq9rxABR4ga68DtWbMv5clFk=/0x0:1420x946/1200x800/filters:focal(597x360:823x586)/cdn.vox-cdn.com/uploads/chorus_image/image/60195171/02_pubg.w710.h473.2x.0.jpg" style="display:none; width: 750px; height: 400px; margin: 0; padding: 0; margin-top: 50px">
+	</div>
+
+  <script>
+  var myIndex = 0;
+  carousel();
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+  }
+  </script>
+
+{% endblock content %}
+</div>

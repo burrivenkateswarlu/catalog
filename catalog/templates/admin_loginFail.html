@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="">
+  <div class="row justify-content-center">
+    <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header bg-info">
+            <h2>Admin Login</h2>
+            </div>
+            <form class="form" action="{{ url_for('admin_login') }}" method="POST">
+            <div class="card-body bg-secondary">
+
+                  <div class="form-group">
+                    <label for="uname">User Name:</label>
+                    <input type="text" class="form-control" name="uname" id="uname" placeholder="User Name:">
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Password:">
+                  </div> 
+                  <p class="bg-warning">Invalid Username and Password</p>
+              </div>
+              <div class="card-footer bg-dark text-center">
+                <input type="submit" class="btn btn-primary " value="Login">
+            </div>
+            </form>
+        </div>
+    </div>
+  		
+    </div>
+</div>
+</body>
+</html>

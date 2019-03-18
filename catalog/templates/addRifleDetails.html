@@ -1,0 +1,51 @@
+
+
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+
+<div class="">
+		<div class="mr-sm-2 mb-2 col-sm-8" style="margin: 10px;">
+			<form action="{{ url_for('addRifleDetails',vrname=vrname)}}" method="POST">
+				<div class="panel panel-primary">
+				  <div class="panel-heading bg-success">Add Rifle Details</div>
+				  <div class="panel-body">
+				  	
+					  <div class="form-group">
+					  	<label class="text-primary" for="name">Enter Rifle Name:</label>
+					    <input type="name" class="form-control" name="name" placeholder="Enter Rifle Name:" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="ammo">Enter Rifle Ammo:</label>
+					    <input type="text" class="form-control" name="ammo" placeholder="Enter Rifle Ammo:" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="capacity">Enter Rifle Capacity:</label>
+					    <input type="text" class="form-control" name="capacity" placeholder="Enter Rifle Capacity:" required>
+					  </div>
+					  <div class="text-primary" class="form-group">
+					  	<label for="power">Enter Rifle Power:</label>
+					    <input type="text" class="form-control" name="power" placeholder="Enter Rifle Power:" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="range">Enter Rifle Range:</label>
+					    <input type="text" class="form-control" name="range" placeholder="Enter Rifle Range:" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="stability">Enter Rifle Stability:</label>
+					    <input type="text" class="form-control" name="stability" placeholder="Enter Rifle Stability:" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="rlink">Enter Rifle Link:</label>
+					    <input type="text" class="form-control" name="rlink" placeholder="Enter Rifle Link:" required>
+					  </div>
+					  <div class="form-group">
+					    <input type="text" class="form-control " name="riflemodelnameid" value="{{ vrname }}" readonly>
+					  </div>
+				  </div> 
+				  <div class="panel-footer text-center"><input type="submit" class="btn btn-primary" value="Submit"></div>
+				</div>
+				</form>
+			</div>
+</div>
+{% endblock content %}
